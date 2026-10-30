@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0A0C0A">
+  <meta name="description" content="Uttarakhand Creative makes thoughtful photography, films and social content for brands, places and people.">
+  <title>Uttarakhand Creative — Stories, Seen Differently</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #0A0C0A;
+      --ink: #F2F2F2;
+      --muted: #B9C0B7;
+      --line: rgb(242 242 242 / 16%);
+      --accent: #BBFF99;
+      --dark: #080A08;
+      --surface: #171B17;
+      --decor: #71856A;
+      --surface-raised: #1D231D;
+      --serif: "Poppins", sans-serif;
+      --sans: "Poppins", sans-serif;
+      --display: "Poppins", sans-serif;
+      --page: min(1320px, calc(100% - 96px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: var(--page); margin-inline: auto; }
+    .eyebrow { margin: 0; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .15em; line-height: 1.5; text-transform: uppercase; }
+    .section { padding: 112px 0; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 10px 0 0; font: 500 clamp(38px, 5vw, 64px)/1.02 var(--display); letter-spacing: -.065em; }
+    .section-heading p { max-width: 330px; margin: 0 0 5px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .arrow-link { display: inline-flex; align-items: center; gap: 13px; font-size: 13px; font-weight: 700; }
+    .arrow-link span { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid currentColor; border-radius: 50%; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .arrow-link:hover span { transform: translateX(3px); background: var(--ink); color: var(--paper); }
+
+    .header { position: absolute; z-index: 5; top: 0; left: 0; width: 100%; color: var(--ink); }
+    .header-inner { position: relative; display: flex; height: 104px; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font: 700 14px/1.05 var(--display); letter-spacing: -.03em; }
+    .brand-logo { display: block; width: 40px; height: 31px; object-fit: contain; filter: brightness(0) invert(1); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .hello-link { display: inline-flex; min-height: 46px; align-items: center; padding: 0 19px; border: 1px solid var(--line); border-radius: 99px; font-size: 11px; font-weight: 600; letter-spacing: .04em; transition: background .2s ease, color .2s ease; }
+    .hello-link:hover { background: var(--accent); color: var(--dark); }
+    .menu-toggle { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
+    .menu-icon { display: grid; gap: 5px; }
+    .menu-icon i { display: block; width: 17px; height: 1px; background: currentColor; transition: transform .2s ease; }
+    .menu-toggle[aria-expanded="true"] .menu-icon i:first-child { transform: translateY(3px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] .menu-icon i:last-child { transform: translateY(-3px) rotate(-45deg); }
+    .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+    .nav { position: absolute; top: 86px; right: 0; display: none; width: 240px; padding: 12px 20px; border: 1px solid var(--line); background: var(--surface-raised); color: var(--ink); }
+    .nav.is-open { display: flex; flex-direction: column; align-items: stretch; }
+    .nav a { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 12px; font-weight: 500; }
+    .nav a:last-child { border-bottom: 0; }
+    .nav a:hover { opacity: .68; }
+    .nav .nav-cta { padding: 13px 0; }
+
+    .hero { position: relative; min-height: min(900px, 100svh); overflow: hidden; background: var(--paper); color: var(--ink); }
+    .hero-content { position: relative; width: var(--page); height: min(900px, 100svh); min-height: 680px; margin: 0 auto; }
+    .hero-title-block { position: absolute; z-index: 2; top: 21%; right: 0; left: 0; }
+    .hero h1 { margin: 0; font: 400 clamp(66px, 11.5vw, 158px)/.94 var(--display); letter-spacing: -.075em; text-transform: uppercase; }
+    .hero h1 span { display: block; width: fit-content; white-space: nowrap; }
+    .hero h1 span:last-child { padding-bottom: .025em; border-bottom: 2px solid currentColor; }
+    .hero-image { position: absolute; top: 51%; right: 0; width: 66%; height: 51%; border-radius: 2px; object-fit: cover; object-position: center 52%; }
+    .hero-caption { position: absolute; top: calc(51% - 30px); right: 0; margin: 0; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+    .scroll-cue { position: absolute; bottom: 30px; left: 0; display: flex; align-items: center; gap: 12px; color: var(--ink); font-size: 9px; font-weight: 500; letter-spacing: .12em; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .scroll-cue::before { width: 1px; height: 72px; background: var(--decor); content: ""; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 12px; padding: 0 19px; border: 1px solid transparent; border-radius: 2px; background: var(--accent); color: var(--dark); font-size: 12px; font-weight: 700; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { transform: translateY(-2px); background: #D0FFB6; color: var(--dark); }
+    .text-link { font-size: 12px; font-weight: 600; }
+
+    .intro { display: grid; grid-template-columns: 1fr 1.15fr; align-items: start; gap: 10%; padding-block: 112px 106px; }
+    .intro-label { display: flex; align-items: center; gap: 12px; padding-top: 12px; }
+    .intro-label::before { width: 30px; height: 1px; background: var(--ink); content: ""; }
+    .intro h2 { max-width: 760px; margin: 0; font: 500 clamp(32px, 4vw, 53px)/1.18 var(--display); letter-spacing: -.06em; }
+    .intro h2 em { font-family: var(--serif); font-weight: 400; }
+
+    .portfolio { padding-top: 32px; }
+    .portfolio-category + .portfolio-category { margin-top: 76px; }
+    .portfolio-category-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
+    .portfolio-category-heading h3 { margin: 8px 0 0; font: 500 clamp(30px, 4vw, 48px)/1.05 var(--display); letter-spacing: -.06em; }
+    .carousel-controls { display: flex; gap: 9px; }
+    .carousel-control { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; font-size: 18px; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+    .carousel-control:hover:not(:disabled), .carousel-control:focus-visible { border-color: var(--accent); background: var(--accent); color: var(--dark); }
+    .carousel-control:disabled { cursor: default; opacity: .38; }
+    .carousel-controls:focus-within { outline: none; }
+    .carousel-track { display: flex; gap: 18px; overflow-x: auto; padding: 2px 0 18px; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: var(--accent) transparent; scrollbar-width: thin; overscroll-behavior-inline: contain; }
+    .work-card { position: relative; flex: 0 0 min(78%, 840px); aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-raised); scroll-snap-align: start; }
+    .work-image, .work-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .work-image { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .work-card:hover .work-image { transform: scale(1.035); }
+    .work-card::after { position: absolute; inset: 35% 0 0; background: linear-gradient(0deg, rgb(8 10 8 / 92%), rgb(10 12 10 / 0%)); content: ""; pointer-events: none; }
+    .video-card::after { display: none; }
+    .video-card { aspect-ratio: auto; }
+    .video-card { display: block; color: inherit; }
+    .video-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .video-thumbnail-wrap { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; background: var(--surface-raised); }
+    .video-thumbnail { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+    .video-thumbnail.is-portrait { object-fit: contain; }
+    .video-card:hover .video-thumbnail { transform: scale(1.035); }
+    .video-play { position: absolute; top: 50%; left: 50%; display: grid; width: 66px; height: 66px; place-items: center; border: 1px solid rgb(255 255 255 / 70%); border-radius: 50%; background: rgb(10 12 10 / 72%); color: var(--accent); transform: translate(-50%, -50%); transition: background .2s ease, color .2s ease, scale .2s ease; }
+    .video-play svg { width: 22px; height: 22px; margin-left: 3px; fill: currentColor; }
+    .video-card:hover .video-play, .video-card:focus-visible .video-play { background: var(--accent); color: var(--dark); scale: 1.08; }
+    .video-caption { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 16px; background: var(--surface); color: var(--ink); }
+    .video-title { display: block; font: 500 16px/1.3 var(--display); letter-spacing: -.03em; }
+    .video-description { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .video-caption .work-type { border-color: var(--line); color: var(--ink); }
+    .work-meta { position: absolute; z-index: 1; right: 22px; bottom: 20px; left: 22px; display: flex; align-items: end; justify-content: space-between; gap: 12px; color: var(--ink); pointer-events: none; }
+    .work-meta h4 { margin: 0; font: 500 20px var(--display); letter-spacing: -.04em; }
+    .work-meta p { margin: 5px 0 0; color: rgb(242 242 242 / 82%); font-size: 11px; }
+    .work-type { flex: 0 0 auto; padding: 7px 10px; border: 1px solid rgb(242 242 242 / 58%); border-radius: 99px; font-size: 9px; letter-spacing: .04em; text-transform: uppercase; }
+    .carousel-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .services { background: #101310; }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .service { min-height: 235px; padding: 25px 24px 24px 0; border-right: 1px solid var(--line); }
+    .service + .service { padding-left: 24px; }
+    .service:last-child { border-right: 0; }
+    .service-number { color: var(--muted); font-size: 10px; }
+    .service h3 { margin: 39px 0 11px; font: 500 21px var(--display); letter-spacing: -.04em; }
+    .service p { max-width: 225px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .service-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 26px; padding-top: 21px; border-top: 1px solid var(--line); }
+    .service-foot p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .about-copy h2 { margin: 14px 0 23px; font: 500 clamp(40px, 5vw, 65px)/1.04 var(--display); letter-spacing: -.075em; }
+    .about-copy > p:not(.eyebrow) { max-width: 445px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 37px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .about-details strong { display: block; margin-bottom: 7px; font-size: 11px; }
+    .about-details span { color: var(--muted); font-size: 11px; }
+    .about-copy .arrow-link { margin-top: 34px; }
+
+    .contact { padding: 88px 0; background: var(--dark); color: var(--ink); }
+    .contact-inner { display: flex; align-items: end; justify-content: space-between; gap: 36px; }
+    .contact .eyebrow { color: var(--accent); }
+    .contact h2 { max-width: 800px; margin: 14px 0 0; font: 500 clamp(42px, 6vw, 78px)/1.02 var(--display); letter-spacing: -.075em; }
+    .contact h2 em { font-family: var(--serif); font-weight: 400; }
+    .contact .button { flex: 0 0 auto; margin-bottom: 4px; background: var(--accent); color: var(--dark); }
+    .footer { padding: 30px 0; background: var(--dark); color: var(--ink); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding-top: 23px; border-top: 1px solid var(--line); }
+    .footer .brand { font-size: 12px; }
+    .footer .brand-logo { width: 34px; height: 26px; }
+    .footer-links { display: flex; gap: 22px; color: var(--muted); font-size: 10px; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-instagram { display: inline-flex; align-items: center; justify-content: center; }
+    .footer-instagram svg { display: block; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+    .copyright { color: var(--muted); font-size: 10px; }
+
+    @media (max-width: 800px) {
+      :root { --page: min(100% - 48px, 650px); }
+      .section { padding: 78px 0; }
+      .header-inner { height: 82px; }
+      .nav { top: 72px; width: 230px; }
+      .hero { min-height: min(820px, 100svh); }
+      .hero-content { height: min(820px, 100svh); min-height: 680px; }
+      .hero h1 { font-size: clamp(66px, 11.5vw, 112px); }
+      .intro { grid-template-columns: 1fr; gap: 25px; padding-block: 77px 66px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 15px; margin-bottom: 28px; }
+      .section-heading p { max-width: 430px; }
+      .work-card { flex-basis: 86%; }
+      .video-card { flex-basis: 86%; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .service { min-height: 210px; padding: 22px 18px 22px 0; border-bottom: 1px solid var(--line); }
+      .service + .service { padding-left: 18px; }
+      .service:nth-child(2) { border-right: 0; }
+      .service:nth-child(3) { padding-left: 0; border-bottom: 0; }
+      .service:nth-child(4) { border-right: 0; border-bottom: 0; }
+      .contact-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      :root { --page: calc(100% - 40px); }
+      .header-inner { height: 76px; }
+      .brand { gap: 8px; font-size: 11px; }
+      .brand-logo { width: 34px; height: 27px; }
+      .header-actions { gap: 8px; }
+      .hello-link { min-height: 40px; padding-inline: 13px; font-size: 9px; }
+      .menu-toggle { width: 40px; height: 40px; }
+      .hero { min-height: min(680px, 100svh); }
+      .hero-content { height: min(680px, 100svh); min-height: 640px; }
+      .hero-title-block { top: 20%; }
+      .hero h1 { font-size: clamp(42px, 11.3vw, 58px); letter-spacing: -.075em; }
+      .hero h1 span:last-child { border-bottom-width: 1px; }
+      .hero-image { top: 42%; right: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: center; }
+      .hero-caption { top: calc(42% - 24px); font-size: 8px; }
+      .scroll-cue { bottom: 18px; gap: 8px; font-size: 8px; }
+      .scroll-cue::before { height: 44px; }
+      .intro h2 { font-size: 35px; }
+      .portfolio { padding-top: 8px; }
+      .portfolio-category + .portfolio-category { margin-top: 55px; }
+      .portfolio-category-heading { align-items: center; }
+      .carousel-controls { gap: 7px; }
+      .carousel-control { width: 37px; height: 37px; font-size: 16px; }
+      .work-card { flex-basis: 92%; aspect-ratio: 4 / 3; }
+      .video-card { flex-basis: 92%; aspect-ratio: auto; }
+      .work-meta { right: 14px; bottom: 14px; left: 14px; }
+      .work-meta h4 { font-size: 16px; }
+      .work-meta p { font-size: 10px; }
+      .work-type { padding: 6px 7px; font-size: 8px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .service { min-height: 225px; }
+      .service h3 { margin-top: 29px; font-size: 18px; }
+      .service-foot { align-items: start; flex-direction: column; }
+      .about-copy h2 { font-size: 48px; }
+      .contact { padding: 70px 0; }
+      .footer-inner { align-items: start; flex-direction: column; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="Uttarakhand Creative home">
+        <img class="brand-logo" src="ukc-logo.svg" alt="">
+        <span>UTTARAKHAND<br>CREATIVE</span>
+      </a>
+      <div class="header-actions">
+        <a class="hello-link" href="Uttarakhand_Creative_Brochure.pdf" target="_blank" rel="noopener noreferrer">Get Brochure</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+          <span class="menu-label">Menu</span>
+        </button>
+      </div>
+      <nav class="nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-title-block">
+          <h1><span>Stories that</span><span>move</span></h1>
+        </div>
+        <video class="hero-image" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="Videography/posters/roastery-hero.jpg" aria-label="Roastery film for Udupiwala">
+          <source src="roastery.mp4" type="video/mp4">
+        </video>
+        <p class="hero-caption">Filmed for Udupiwala</p>
+        <a class="scroll-cue" href="#portfolio" aria-label="Scroll to explore our portfolio">Scroll</a>
+      </div>
+    </section>
+
+    <section class="wrap intro" aria-label="Introduction">
+      <div class="intro-label eyebrow">A little about us</div>
+      <h2>We make visual stories that feel <em>like somewhere.</em> Rooted in the mountains, made to travel.</h2>
+    </section>
+
+    <section class="section portfolio" id="portfolio">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A collection of moments</p>
+            <h2>Selected work</h2>
+          </div>
+          <p>Frames, films and fragments from the places and people we’ve had the pleasure of working with.</p>
+        </div>
+        <section class="portfolio-category" aria-labelledby="photography-heading">
+          <div class="portfolio-category-heading">
+            <div><p class="eyebrow">Still images</p><h3 id="photography-heading">Photography</h3></div>
+            <div class="carousel-controls" aria-label="Photography carousel controls">
+              <button class="carousel-control" type="button" data-carousel-prev="photography-track" aria-label="Previous photography">‹</button>
+              <button class="carousel-control" type="button" data-carousel-next="photography-track" aria-label="Next photography">›</button>
+            </div>
+          </div>
+          <div class="carousel-track" id="photography-track" role="region" aria-label="Photography portfolio carousel" tabindex="0">
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Corporate-Event_01.jpg" alt="Corporate event photography, frame 1" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Corporate event</h4><p>Photography · 01</p></div><span class="work-type">Corporate</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Corporate-Event_02.jpg" alt="Corporate event photography, frame 2" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Corporate event</h4><p>Photography · 02</p></div><span class="work-type">Corporate</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Corporate-Event_03.jpg" alt="Corporate event photography, frame 3" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Corporate event</h4><p>Photography · 03</p></div><span class="work-type">Corporate</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Corporate-Event_04.jpg" alt="Corporate event photography, frame 4" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Corporate event</h4><p>Photography · 04</p></div><span class="work-type">Corporate</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Corporate-Event_05.jpg" alt="Corporate event photography, frame 5" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Corporate event</h4><p>Photography · 05</p></div><span class="work-type">Corporate</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_01.jpg" alt="Event photography, frame 1" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 01</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_02.jpg" alt="Event photography, frame 2" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 02</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_03.jpg" alt="Event photography, frame 3" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 03</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_04.jpg" alt="Event photography, frame 4" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 04</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_05.jpg" alt="Event photography, frame 5" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 05</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Event_06.jpg" alt="Event photography, frame 6" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Event story</h4><p>Photography · 06</p></div><span class="work-type">Event</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_01.jpg" alt="Property photography, frame 1" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 01</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_02.jpg" alt="Property photography, frame 2" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 02</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_03.jpg" alt="Property photography, frame 3" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 03</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_04.jpg" alt="Property photography, frame 4" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 04</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_05.jpg" alt="Property photography, frame 5" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 05</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_06.jpg" alt="Property photography, frame 6" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 06</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_07.jpg" alt="Property photography, frame 7" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 07</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_08.jpg" alt="Property photography, frame 8" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 08</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_09.jpg" alt="Property photography, frame 9" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 09</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_10.jpg" alt="Property photography, frame 10" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 10</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_11.jpg" alt="Property photography, frame 11" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 11</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_12.jpg" alt="Property photography, frame 12" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 12</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_13.jpg" alt="Property photography, frame 13" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 13</p></div><span class="work-type">Property</span></div>
+            </article>
+            <article class="work-card">
+              <img class="work-image" src="Photography/web/Property_14.jpg" alt="Property photography, frame 14" loading="lazy" decoding="async">
+              <div class="work-meta"><div><h4>Property & spaces</h4><p>Photography · 14</p></div><span class="work-type">Property</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="portfolio-category" aria-labelledby="videography-heading">
+          <div class="portfolio-category-heading">
+            <div><p class="eyebrow">Moving images</p><h3 id="videography-heading">Videography</h3></div>
+            <div class="carousel-controls" aria-label="Videography carousel controls">
+              <button class="carousel-control" type="button" data-carousel-prev="videography-track" aria-label="Previous videography">‹</button>
+              <button class="carousel-control" type="button" data-carousel-next="videography-track" aria-label="Next videography">›</button>
+            </div>
+          </div>
+          <div class="carousel-track" id="videography-track" role="region" aria-label="Videography portfolio carousel" tabindex="0">
+            <a class="work-card video-card" href="https://drive.google.com/file/d/1J1MA_0rY00C6Zr0XARArjnmaoPuvPPUT/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play Devsha event film 1 on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail" src="Videography/posters/event-devsha-01.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Devsha event film · 01</span><span class="video-description">Event film · Devsha</span></span><span class="work-type">Event film</span></span>
+            </a>
+            <a class="work-card video-card" href="https://drive.google.com/file/d/1pWkZvrlTaE4hiRVNO5Bi4H_EYfPjFprN/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play Devsha event film 2 on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail is-portrait" src="Videography/posters/event-devsha-02.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Devsha event film · 02</span><span class="video-description">Event film · Devsha</span></span><span class="work-type">Event film</span></span>
+            </a>
+            <a class="work-card video-card" href="https://drive.google.com/file/d/1gg2aJ6X6aUmTCnWDfETwKL9HrKrNnyNy/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play product film 1 on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail is-portrait" src="Videography/posters/product-01.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Product film · 01</span><span class="video-description">Product shoot</span></span><span class="work-type">Product film</span></span>
+            </a>
+            <a class="work-card video-card" href="https://drive.google.com/file/d/1PszaA3Zl5xJv3B4cD0iwp1zfFOZX3piU/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play product film 2 on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail" src="Videography/posters/product-02.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Product film · 02</span><span class="video-description">Product shoot</span></span><span class="work-type">Product film</span></span>
+            </a>
+            <a class="work-card video-card" href="https://drive.google.com/file/d/1ukmFqbmEq5u2P-NseCcWoUSTsy4K_k-Q/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play Ramgarh property film on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail" src="Videography/posters/property-ramgarh.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Property film · Ramgarh</span><span class="video-description">Property shoot · Ramgarh</span></span><span class="work-type">Property film</span></span>
+            </a>
+            <a class="work-card video-card" href="https://drive.google.com/file/d/18g0ndaF5KuKVz9gks6tpfg1oLlLsTvSs/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Play property film on Google Drive">
+              <span class="video-thumbnail-wrap"><img class="video-thumbnail" src="Videography/posters/property.jpg" alt="" loading="lazy" decoding="async"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.8v14.4L19 12 7 4.8Z"></path></svg></span></span>
+              <span class="video-caption"><span><span class="video-title">Property film</span><span class="video-description">Property shoot</span></span><span class="work-type">Property film</span></span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">From first idea to final frame</p><h2>What we do</h2></div>
+          <p>Considered creative, made with care and shaped around what your story needs.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service"><span class="service-number">01 / STILL</span><h3>Photography</h3><p>Thoughtful images for brands, hospitality, products, people and places.</p></article>
+          <article class="service"><span class="service-number">02 / MOTION</span><h3>Film & video</h3><p>From brand films to short-form video, made to hold attention and tell a story.</p></article>
+          <article class="service"><span class="service-number">03 / CONTENT</span><h3>Social content</h3><p>Platform-ready photo and video assets with a consistent creative point of view.</p></article>
+          <article class="service"><span class="service-number">04 / ONGOING</span><h3>Social media</h3><p>Planning, publishing and ongoing support to help your channels feel like you.</p></article>
+        </div>
+        <div class="service-foot"><p>Not sure what you need yet? That’s a good place to start.</p><a class="arrow-link" href="#contact">Tell us about it <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap about-copy">
+        <p class="eyebrow">A creative studio with a sense of place</p>
+        <h2>Who we are?</h2>
+        <p>Uttarakhand Creative is an independent content studio based in the foothills of the Himalayas. We partner with people and businesses to make photography and films that bring their work into focus—honest, considered and full of feeling.</p>
+        <div class="about-details">
+          <div><strong>Based in</strong><span>Uttarakhand, India</span></div>
+        </div>
+        <a class="arrow-link" href="#contact">Get to know us <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-inner">
+        <div><p class="eyebrow">Have something in mind?</p><h2>Let’s make it <em>mean something.</em></h2></div>
+        <a class="button" href="https://wa.me/916395995769">Start a conversation <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home" aria-label="Uttarakhand Creative, back to top"><img class="brand-logo" src="ukc-logo.svg" alt=""><span>UTTARAKHAND CREATIVE</span></a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#portfolio">Portfolio</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+        <a class="footer-instagram" href="https://www.instagram.com/uttarakhandcreative" target="_blank" rel="noopener noreferrer" aria-label="Uttarakhand Creative on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.75" cy="6.5" r=".75" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+      </nav>
+      <span class="copyright">© <span id="year"></span> Uttarakhand Creative</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav");
+    const heroVideo = document.querySelector(".hero-image");
+
+    const playHeroVideo = () => {
+      if (document.hidden || !heroVideo.paused) return;
+
+      heroVideo.play().catch((error) => {
+        if (error.name === "NotAllowedError") {
+          console.info("Hero video autoplay was blocked by the browser.");
+          return;
+        }
+        console.error("Hero video could not start playback.", error);
+      });
+    };
+
+    heroVideo.addEventListener("canplay", playHeroVideo);
+    document.addEventListener("visibilitychange", playHeroVideo);
+
+    document.querySelectorAll(".carousel-track").forEach((track) => {
+      const previous = document.querySelector(`[data-carousel-prev="${track.id}"]`);
+      const next = document.querySelector(`[data-carousel-next="${track.id}"]`);
+      const updateControls = () => {
+        previous.disabled = track.scrollLeft <= 1;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      };
+
+      previous.addEventListener("click", () => {
+        track.scrollBy({ left: -track.clientWidth * 0.85, behavior: "smooth" });
+      });
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: track.clientWidth * 0.85, behavior: "smooth" });
+      });
+      track.addEventListener("scroll", updateControls, { passive: true });
+      window.addEventListener("resize", updateControls);
+      updateControls();
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+      nav.classList.toggle("is-open", !isOpen);
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        nav.classList.remove("is-open");
+      });
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
